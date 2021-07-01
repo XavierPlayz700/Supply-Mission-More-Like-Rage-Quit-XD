@@ -9,6 +9,7 @@ function preload()
 {
 	helicopterIMG=loadImage("helicopter.png")
 	packageIMG=loadImage("package.png")
+	song = loadSound("Objection.mp3")
 }
 
 function setup() {
@@ -61,7 +62,9 @@ function setup() {
  	boxRightBody = Bodies.rectangle(boxPosition+200-20 , boxY, 20,100 , {isStatic:true} );
  	World.add(world, boxRightBody);
 
-
+        song.loop();
+	song.setVolume(0.5);
+	
 	Engine.run(engine);
   
 }
