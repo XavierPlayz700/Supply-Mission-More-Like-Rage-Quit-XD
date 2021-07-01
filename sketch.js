@@ -16,7 +16,8 @@ function preload()
 function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
-	
+
+	edges = createEdgeSprites();
 
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
@@ -74,9 +75,11 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
+
+  helicopterSprite.collide(edges);
  
   packageSprite.x = packageBody.position.x;
-  packageSprite.y = packageBody.position.y ;
+  packageSprite.y = packageBody.position.y;
   
   if (keyDown("left")) {
 	helicopterSprite.x = helicopterSprite.x - 5;
@@ -85,6 +88,14 @@ function draw() {
 if (keyDown("right")) {
 	helicopterSprite.x = helicopterSprite.x + 5;
 }
+	
+if (keyDown("up")) {
+	helicopterSprite.y = helicopterSprite.y - 2.5;
+}
+	
+if (keyDown("down")) {
+	helicopterSprite.y = helicopterSprite.y + 2.5;
+}	
 
 if (packageBody.position.y === helicopterSprite.y) {
 	  packageBody.position.x = helicopterSprite.x;
